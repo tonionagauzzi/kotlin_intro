@@ -3,7 +3,7 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <title>Introduction · HonKit</title>
+        <title>解答 (3) · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 3.7.1">
@@ -61,8 +61,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="overview.html" />
+    <link rel="next" href="android_dev_environment.html" />
     
+    
+    <link rel="prev" href="exercise3.html" />
     
 
 <script src="https://unpkg.com/kotlin-playground@1"></script>
@@ -94,7 +96,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -341,7 +343,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.16.1" data-path="answer3.html">
+        <li class="chapter active" data-level="1.16.1" data-path="answer3.html">
             
                 <a href="answer3.html">
             
@@ -402,7 +404,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >解答 (3)</a>
     </h1>
 </div>
 
@@ -417,35 +419,82 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="kotlin-introduction">Kotlin introduction</h1>
-<h2 id="目次">目次</h2>
+                                <h1 id="exercise-3-解答">Exercise (3) <span style="color: red;">解答</span></h1>
+<h2 id="ヌルと戦うjavaプログラマーにkotlinを教えよう！">ヌルと戦うJavaプログラマーにKotlinを教えよう！</h2>
+<p>あなたの部署には、Kotlinをまったく知らないJava開発者のN内さんがいます。</p>
+<p>N内さんは、上司の指示でJavaのコードをKotlinに書き直して、あなたにレビューをお願いして来ました。</p>
+<p>N内さんは「<strong>漏れなくnullチェックできてるし！！</strong>」と自信満々だが、そのコードにはたくさんのビルドエラーがあります。</p>
+<p>あなたは呆れ顔で、このコードの問題を指摘します。</p>
+<h3 id="問題">問題</h3>
+<p>正しい出力結果</p>
+<pre><code>To: antonio@example.com
+message: Hello, Antonio!
+</code></pre><p>が出るよう、以下の条件を守り、コードを<strong>できる限り短く読みやすく</strong>修正してください。</p>
 <ul>
-<li><a href="overview.html">はじめに</a></li>
-<li><a href="about_kotlin.html">Kotlin について</a></li>
-<li><a href="basic_syntax.html">基本的な文法</a></li>
-<li><a href="function.html">関数</a></li>
-<li><a href="first_class_function.html">ちょっと特殊な関数</a></li>
-<li><a href="class.html">クラス</a></li>
-<li><a href="inherit_abstract.html">継承・抽象クラス</a></li>
-<li><a href="interface.html">インターフェース</a></li>
-<li><a href="generics.html">ジェネリクス</a></li>
-<li><a href="null_safe.html">Null安全</a></li>
-<li><a href="design_pattern.html">デザインパターン</a></li>
-<li><a href="tips.html">その他豆知識</a></li>
-<li><a href="exercise1.html">Exercise (1)</a><ul>
-<li><a href="answer1.html"><span style="color: red;">解答 (1)</span></a></li>
+<li><code>/* ここからは変えない */</code>〜<code>/* ここまでは変えない */</code>の間は変えないこと</li>
+<li>予め定義されているクラスをすべて使うこと<ul>
+<li>つまり<code>main</code>に<code>println</code>で直接出力結果を書くことは許されない</li>
 </ul>
 </li>
-<li><a href="exercise2.html">Exercise (2)</a><ul>
-<li><a href="answer2.html"><span style="color: red;">解答 (2)</span></a></li>
+<li><code>if</code>を使うのは1回まで</li>
+</ul>
+<pre><code class="lang-kotlin"><span class="hljs-comment">/* ここからは変えない */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Client</span> </span>(<span class="hljs-keyword">val</span> personalInfo: PersonalInfo?)
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PersonalInfo</span> </span>(<span class="hljs-keyword">val</span> email: String?)
+
+<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Mailer</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">sendMessage</span><span class="hljs-params">(email: <span class="hljs-type">String</span>, message: <span class="hljs-type">String</span>)</span></span>
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CosmosMailer</span>: <span class="hljs-type">Mailer {</span></span>
+    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">sendMessage</span><span class="hljs-params">(email: <span class="hljs-type">String</span>, message: <span class="hljs-type">String</span>)</span></span>{
+        println(<span class="hljs-string">&quot;To: <span class="hljs-variable">$email</span>\nmessage: <span class="hljs-variable">$message</span>&quot;</span>)
+    }
+}
+<span class="hljs-comment">/* ここまでは変えない */</span>
+
+<span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">sendMessageToClient</span><span class="hljs-params">(client: <span class="hljs-type">Client</span>?, message: <span class="hljs-type">String</span>?, mailer: <span class="hljs-type">Mailer</span>)</span></span> {
+    <span class="hljs-keyword">val</span> personalInfo: PersonalInfo? = client?.personalInfo ?: <span class="hljs-keyword">return</span>
+    <span class="hljs-keyword">val</span> email: String = personalInfo?.email ?: <span class="hljs-keyword">return</span>
+    message?.let { mailer.sendMessage(email, it) }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">main</span><span class="hljs-params">(args: <span class="hljs-type">Array</span>&lt;<span class="hljs-type">String</span>&gt;)</span></span> {
+    <span class="hljs-keyword">val</span> personalInfo: PersonalInfo = PersonalInfo(email = <span class="hljs-string">&quot;antonio@example.com&quot;</span>)
+    <span class="hljs-keyword">val</span> client: Client = Client(personalInfo = personalInfo)
+    <span class="hljs-keyword">val</span> mailer: Mailer = CosmosMailer()
+    sendMessageToClient(
+            client = client,
+            message = <span class="hljs-string">&quot;Hello, Antonio!&quot;</span>,
+            mailer = mailer
+    )
+}
+</code></pre>
+<ul>
+<li>参考までに、下記が移植前の Java コードの一部<ul>
+<li>引数のアノテーションによると、<code>client</code>、<code>message</code> は <code>null</code> の可能性がある</li>
+<li>引数のアノテーションによると、<code>mailer</code> は null の可能性がない</li>
+<li>途中で <code>null</code> に出くわしたらに何もせず <code>return</code> している</li>
 </ul>
 </li>
-<li><a href="exercise3.html">Exercise (3)</a><ul>
-<li><a href="answer3.html"><span style="color: red;">解答 (3)</span></a></li>
 </ul>
-</li>
-<li><a href="android_dev_environment.html">Android開発環境の構築</a></li>
-</ul>
+<div><p class="code-filename">Java</p></div>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sendMessageToClient</span><span class="hljs-params">(
+    <span class="hljs-meta">@Nullable</span> Client client,
+    <span class="hljs-meta">@Nullable</span> String message,
+    <span class="hljs-meta">@NonNull</span> Mailer mailer)</span> </span>{
+    <span class="hljs-keyword">if</span> (client == <span class="hljs-keyword">null</span> || message == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span>;
+
+    PersonalInfo personalInfo = client.getPersonalInfo();
+    <span class="hljs-keyword">if</span> (personalInfo == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span>;
+
+    String email = personalInfo.getEmail();
+    <span class="hljs-keyword">if</span> (email == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span>;
+
+    mailer.sendMessage(email, message);
+}
+</code></pre>
 
                                 
                                 </section>
@@ -473,8 +522,12 @@
 
             
                 
+                <a href="exercise3.html" class="navigation navigation-prev " aria-label="Previous page: Exercise (3)">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="overview.html" class="navigation navigation-next navigation-unique" aria-label="Next page: はじめに">
+                
+                <a href="android_dev_environment.html" class="navigation navigation-next " aria-label="Next page: Android開発環境の構築">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -485,7 +538,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"はじめに","level":"1.2","depth":1,"path":"overview.md","ref":"./overview.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["uml","codeblock-filename","head-append","-lunr","-search","search-pro-kui"],"pluginsConfig":{"uml":{"format":"svg","charset":"UTF-8","nailgun":false},"head-append":{"code":["<SCRIPTTAG src=\"https://unpkg.com/kotlin-playground@1\"></SCRIPTTAG>","<SCRIPTTAG src=\"./head-append.js\"></SCRIPTTAG>"]},"codeblock-filename":{},"search-pro-kui":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2022-02-19T13:21:37.784Z","type":"markdown"},"gitbook":{"version":"3.7.1","time":"2022-04-07T00:19:54.652Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"解答 (3)","level":"1.16.1","depth":2,"next":{"title":"Android開発環境の構築","level":"1.17","depth":1,"path":"android_dev_environment.md","ref":"./android_dev_environment.md","articles":[]},"previous":{"title":"Exercise (3)","level":"1.16","depth":1,"path":"exercise3.md","ref":"./exercise3.md","articles":[{"title":"解答 (3)","level":"1.16.1","depth":2,"path":"answer3.md","ref":"./answer3.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["uml","codeblock-filename","head-append","-lunr","-search","search-pro-kui"],"pluginsConfig":{"uml":{"format":"svg","charset":"UTF-8","nailgun":false},"head-append":{"code":["<SCRIPTTAG src=\"https://unpkg.com/kotlin-playground@1\"></SCRIPTTAG>","<SCRIPTTAG src=\"./head-append.js\"></SCRIPTTAG>"]},"codeblock-filename":{},"search-pro-kui":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"answer3.md","mtime":"2022-04-07T00:19:24.256Z","type":"markdown"},"gitbook":{"version":"3.7.1","time":"2022-04-07T00:19:54.652Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

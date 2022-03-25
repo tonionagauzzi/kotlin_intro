@@ -3,7 +3,7 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <title>Exercise (2) · HonKit</title>
+        <title>解答 (1) · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 3.7.1">
@@ -61,10 +61,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="answer2.html" />
+    <link rel="next" href="exercise2.html" />
     
     
-    <link rel="prev" href="answer1.html" />
+    <link rel="prev" href="exercise1.html" />
     
 
 <script src="https://unpkg.com/kotlin-playground@1"></script>
@@ -279,7 +279,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.14.1" data-path="answer1.html">
+        <li class="chapter active" data-level="1.14.1" data-path="answer1.html">
             
                 <a href="answer1.html">
             
@@ -297,7 +297,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.15" data-path="exercise2.html">
+        <li class="chapter " data-level="1.15" data-path="exercise2.html">
             
                 <a href="exercise2.html">
             
@@ -404,7 +404,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Exercise (2)</a>
+        <a href="." >解答 (1)</a>
     </h1>
 </div>
 
@@ -419,105 +419,171 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="exercise-2">Exercise (2)</h1>
-<p>クラスの使い方を抑えたところで、以下の練習をやってみよう！</p>
-<h2 id="奇数か偶数か">奇数か偶数か</h2>
-<p><code>Int</code> を拡張して、<code>isOdd</code>、<code>isEven</code> メソッドを追加してみよう！</p>
+                                <h1 id="exercise-1-解答">Exercise (1) <span style="color: red;">解答</span></h1>
+<h2 id="hello-world">Hello World!</h2>
+<p>まずはこれ！ソースをコンパイルしてとりあえず動かすところまでやってみよう！</p>
 <ul>
-<li><code>isOdd</code> ... 数が奇数であるときに <code>true</code> を返し、偶数のときに <code>false</code> を返すメソッド</li>
-<li><code>isEven</code> ... 数が偶数であるときに <code>true</code> を返し、奇数のときに <code>false</code> を返すメソッド</li>
+<li>動作確認の方法については、<a href="basic_syntax.html#kotlin-playground">基本的な文法 - Kotlin Playground</a> を参照のこと。</li>
+<li>つまり、以下を Run してみよう！</li>
 </ul>
-<pre><code class="lang-kotlin"><span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> isOdd と isEven を拡張メソッドで実装する</span>
-
-<span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">main</span><span class="hljs-params">(args: <span class="hljs-type">Array</span>&lt;<span class="hljs-type">String</span>&gt;)</span></span> {
-    <span class="hljs-keyword">val</span> a = <span class="hljs-number">5</span>
-    println(a.isOdd())  <span class="hljs-comment">// true</span>
-    println(a.isEven()) <span class="hljs-comment">// false</span>
+<pre><code class="lang-kotlin"><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">main</span><span class="hljs-params">(args: <span class="hljs-type">Array</span>&lt;<span class="hljs-type">String</span>&gt;)</span></span> {
+    println(<span class="hljs-string">&quot;Hello world!&quot;</span>)
 }
 </code></pre>
-<h2 id="n-面のサイコロ">n 面のサイコロ</h2>
-<p>サイコロクラス (Dice クラス) を作るよ！プロパティ、メソッドとして以下を備えるとする。</p>
+<h2 id="fizz-buzz">Fizz Buzz</h2>
+<p>基本的な文法、関数の使い方を抑えたところで、以下の練習をやってみよう！</p>
 <ul>
-<li>n 面のサイコロを表す <code>n: Int</code> をコンストラクタで取る</li>
-<li>「サイコロを振る」メソッド <code>roll</code> を備える<ul>
-<li><code>roll</code> は Int をひとつ返す (返る値は 1 以上 n 以下) メソッド</li>
-</ul>
+<li>入力は 1〜100</li>
+<li>3の倍数の時は「Fizz」を出力</li>
+<li>5の倍数の時は「Buzz」を出力</li>
+<li>3の倍数かつ5の倍数の時は「FizzBuzz」を出力</li>
+<li><p>それ以外のときはそのまま数字を出力</p>
 </li>
-<li>ちなみに 100 回振ると壊れて例外 <code>Exception(&quot;I was broken&quot;)</code> を吐く<ul>
-<li>以後、<code>roll</code> を呼び出すと例外を吐く</li>
-<li>別の Dice インスタンスを作ればまた <code>roll</code> できる</li>
-</ul>
+<li><p>出力例</p>
 </li>
 </ul>
-<pre><code class="lang-kotlin"><span class="hljs-keyword">import</span> java.util.Random
-
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dice</span></span>(<span class="hljs-keyword">private</span> <span class="hljs-keyword">val</span> diceFace: <span class="hljs-built_in">Int</span>) {
-    <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> class Dice を完成させる</span>
-
-    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">roll</span><span class="hljs-params">()</span></span>: <span class="hljs-built_in">Int</span> {
-        <span class="hljs-comment">// ヒント：以下は、0〜5 までの値がランダムで返る</span>
-        <span class="hljs-keyword">val</span> random = Random()
-        <span class="hljs-keyword">val</span> n = random.nextInt(<span class="hljs-number">6</span>) 
-        <span class="hljs-keyword">return</span> n
-    }
-}
-
-<span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">main</span><span class="hljs-params">(args: <span class="hljs-type">Array</span>&lt;<span class="hljs-type">String</span>&gt;)</span></span> {
-    <span class="hljs-keyword">val</span> d = Dice(<span class="hljs-number">16</span>)
-    <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> <span class="hljs-number">1.</span><span class="hljs-number">.100</span>) {
-        println(d.roll()) <span class="hljs-comment">// 1〜16 までの数字</span>
-    }
-    println(d.roll()) <span class="hljs-comment">// Exception</span>
-}
-</code></pre>
-<h2 id="呼び出した回数をカウントする">呼び出した回数をカウントする</h2>
-<p>カスタムセッターを使って、何度呼び出されたかをカウントしてみよう！</p>
-<pre><code class="lang-kotlin"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyCustomClass</span> </span>{
-    <span class="hljs-keyword">var</span> counter: <span class="hljs-built_in">Int</span> = <span class="hljs-number">0</span>
-    <span class="hljs-keyword">var</span> propertyWithCounter: <span class="hljs-built_in">Int</span> = <span class="hljs-number">0</span>
-        <span class="hljs-comment">/* <span class="hljs-doctag">TODO:</span> ここにカスタムセッターを書く */</span>
-}
-
-<span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">main</span><span class="hljs-params">(args: <span class="hljs-type">Array</span>&lt;<span class="hljs-type">String</span>&gt;)</span></span> {
-    <span class="hljs-keyword">val</span> p = MyCustomClass()
-    p.propertyWithCounter = <span class="hljs-number">123</span>
-    p.propertyWithCounter = <span class="hljs-number">456</span>
-    p.propertyWithCounter = <span class="hljs-number">789</span>
-    println(p.counter) <span class="hljs-comment">// 3</span>
-}
-</code></pre>
-<h2 id="世界のナベアツ">世界のナベアツ</h2>
-<p>ところで、世界のナベアツはご存知でしょうか。</p>
-<ul>
-<li>現在は落語家になっていらっしゃる。高座名は「桂三度」</li>
-<li>彼の持ちネタ「3の倍数と3が付く数字のときだけアホになります」というのがいっとき (2008年前後と思われる) 流行った</li>
-<li>詳細は wikipedia 等を参照されたし</li>
+<pre><code>1
+2
+Fizz
+4
+Buzz
+Fizz
+7
+8
+Fizz
+Buzz
+...
+FizzBuzz
+91
+92
+Fizz
+94
+Buzz
+Fizz
+97
+98
+Fizz
+Buzz
+</code></pre><ul>
+<li>ポイント<ul>
+<li><code>if</code> 文、<code>for</code> ループが使えれば解けるはず</li>
+<li><code>when</code> を使って短く書いたりもできる</li>
 </ul>
-<p>ということで、ナベアツクラスを作ってみよう！</p>
-<ul>
-<li><code>next</code> というメソッドを持つ。戻り値は <code>String</code></li>
-<li>ナベアツは内部的にカウンターを持っており、<code>next</code> が呼び出されるたびにカウンターを 1 つずつ増やしていく</li>
-<li>内部カウンターが「3の倍数と3が付く数字のとき」、<code>next</code> は <code>Aho</code> を返す</li>
-<li>それ意外のときは、カウンターの値を文字列にしたものをそのまま返す</li>
+</li>
 </ul>
-<pre><code class="lang-kotlin"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NabeAtsu</span> </span>{
-    <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> 実装する</span>
-
-    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">next</span><span class="hljs-params">()</span></span>: String {
-        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> 実装する</span>
+<pre><code class="lang-kotlin"><span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">fizzBuzz</span><span class="hljs-params">(number: <span class="hljs-type">Int</span>)</span></span>: String {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">when</span> {
+        number % <span class="hljs-number">15</span> == <span class="hljs-number">0</span> -&gt; <span class="hljs-string">&quot;FizzBuzz&quot;</span>
+        number % <span class="hljs-number">5</span> == <span class="hljs-number">0</span> -&gt; <span class="hljs-string">&quot;Buzz&quot;</span>
+        number % <span class="hljs-number">3</span> == <span class="hljs-number">0</span> -&gt; <span class="hljs-string">&quot;Fizz&quot;</span>
+        <span class="hljs-keyword">else</span> -&gt; <span class="hljs-string">&quot;<span class="hljs-variable">$number</span>&quot;</span>
     }
 }
 
+<span class="hljs-comment">// 1行でも書ける</span>
+<span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">fizzBuzz2</span><span class="hljs-params">(number: <span class="hljs-type">Int</span>)</span></span> = <span class="hljs-string">&quot;<span class="hljs-subst">${if (number % <span class="hljs-number">3</span> == <span class="hljs-number">0</span>) <span class="hljs-string">&quot;Fizz&quot;</span> else <span class="hljs-string">&quot;&quot;</span>}</span><span class="hljs-subst">${if (number % <span class="hljs-number">5</span> == <span class="hljs-number">0</span>) <span class="hljs-string">&quot;Buzz&quot;</span> else <span class="hljs-string">&quot;&quot;</span>}</span>&quot;</span>.let { output -&gt; <span class="hljs-keyword">if</span> (output.isBlank()) <span class="hljs-string">&quot;<span class="hljs-variable">$number</span>&quot;</span> <span class="hljs-keyword">else</span> output }
+
 <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">main</span><span class="hljs-params">(args: <span class="hljs-type">Array</span>&lt;<span class="hljs-type">String</span>&gt;)</span></span> {
-    <span class="hljs-keyword">val</span> n = NabeAtsu()
     <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> <span class="hljs-number">1.</span><span class="hljs-number">.100</span>) {
-        println(n.next())
+        println(fizzBuzz(i))
     }
 }
 </code></pre>
-<pre><code class="lang-bash"><span class="hljs-comment"># 実行例 (実際は改行されますがスペースの関係で横に書きます)</span>
-1 2 Aho 4 5 Aho 7 8 Aho 10 11 Aho Aho 14 Aho 16 17 Aho 19 20 Aho 22 Aho Aho 25 26 Aho 28 29 Aho
-Aho Aho Aho Aho Aho Aho Aho Aho Aho 40 41 Aho Aho ...
+<ul>
+<li>余裕があれば fizzBuzz 関数を書いて main を短くしよう！</li>
+</ul>
+<h2 id="うるう年">うるう年</h2>
+<p>入力された数字を西暦としたときに、うるう年かどうか判定する関数を書いてみよう！</p>
+<ul>
+<li>入力は 0 以上の <code>Int</code></li>
+<li>うるう年ならば <code>true</code>、そうでないならば <code>false</code> を返す</li>
+<li>ところでうるう年って？<ul>
+<li>年が 4 で割り切れる場合、その年はうるう年として扱う。<br>ただし、100 で割り切れてかつ 400 で割り切れない年は除く</li>
+<li>1700、1800、1900、2100、2200、2300、2500、2600 はうるう年ではない</li>
+<li>1600、2000、2400 はうるう年</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-kotlin"><span class="hljs-keyword">import</span> java.security.InvalidParameterException
+
+<span class="hljs-comment">// うるう年かどうかを判定する関数</span>
+<span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">isLeapYear</span><span class="hljs-params">(year: <span class="hljs-type">Int</span>)</span></span>: <span class="hljs-built_in">Boolean</span> {
+    <span class="hljs-comment">// 0未満はエラー</span>
+    <span class="hljs-keyword">if</span> (year &lt; <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">throw</span> InvalidParameterException(<span class="hljs-string">&quot;The parameter \&quot;year\&quot; should not minus.&quot;</span>)
+    }
+
+    <span class="hljs-comment">// うるう年は4で割り切れることが前提</span>
+    <span class="hljs-keyword">if</span> (year % <span class="hljs-number">4</span> != <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+    }
+
+    <span class="hljs-comment">// 100で割り切れて、400で割り切れないとうるう年ではない</span>
+    <span class="hljs-keyword">if</span> (year % <span class="hljs-number">100</span> == <span class="hljs-number">0</span> &amp;&amp; year % <span class="hljs-number">400</span> != <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+}
+
+<span class="hljs-comment">// もっと短く書ける</span>
+<span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">isLeapYear2</span><span class="hljs-params">(year: <span class="hljs-type">Int</span>)</span></span> = <span class="hljs-keyword">if</span> (year &lt; <span class="hljs-number">0</span>) {
+    <span class="hljs-keyword">throw</span> InvalidParameterException(<span class="hljs-string">&quot;The parameter \&quot;year\&quot; should not minus.&quot;</span>)
+} <span class="hljs-keyword">else</span> {
+    year % <span class="hljs-number">400</span> == <span class="hljs-number">0</span> || (year % <span class="hljs-number">100</span> != <span class="hljs-number">0</span> &amp;&amp; year % <span class="hljs-number">4</span> == <span class="hljs-number">0</span>)
+}
+
+<span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">main</span><span class="hljs-params">(args: <span class="hljs-type">Array</span>&lt;<span class="hljs-type">String</span>&gt;)</span></span> {
+    <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> <span class="hljs-number">2000.</span><span class="hljs-number">.2100</span>) {
+        <span class="hljs-keyword">if</span> (isLeapYear(i)) {
+            println(<span class="hljs-string">&quot;<span class="hljs-variable">$i</span> 年はうるう年です！&quot;</span>)
+        }
+    }
+}
+</code></pre>
+<ul>
+<li>結果を検証しよう！<ul>
+<li><a href="https://citizen.jp/support-jp/manual/terms/deeper_01.html" target="_blank">https://citizen.jp/support-jp/manual/terms/deeper_01.html</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="累乗">累乗</h2>
+<p>数字をふたつ引数にとって (<code>a</code>、<code>n</code> とする)、a の n 乗を返す関数を書いてみよう！</p>
+<ul>
+<li>入力は <code>a</code>、<code>n</code> 共に任意の数 (正の数でも負の数でも浮動小数点でも OK) とする</li>
+<li>…とすると考慮することが非常に増えるので、ここではひとまず、いずれも正の整数とする<ul>
+<li>余裕があったら浮動小数点も取れるようにしてみよう！</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-kotlin"><span class="hljs-keyword">import</span> kotlin.math.pow
+
+<span class="hljs-comment">// nは整数しか対応していない版</span>
+<span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">power</span><span class="hljs-params">(a: <span class="hljs-type">Double</span>, n: <span class="hljs-type">Double</span>)</span></span>: <span class="hljs-built_in">Double</span> {
+    <span class="hljs-keyword">if</span> (a &lt; <span class="hljs-number">0</span> || n &lt; <span class="hljs-number">0</span>) {
+        println(<span class="hljs-string">&quot;inputs must be positive. return 0&quot;</span>)
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0.0</span>
+    }
+
+    <span class="hljs-keyword">var</span> res = <span class="hljs-number">1.0</span>
+    <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> <span class="hljs-number">1.</span>.n.toInt()) {
+        res *= a
+    }
+
+    <span class="hljs-keyword">return</span> res
+}
+
+<span class="hljs-comment">// nも浮動小数点に対応した版</span>
+<span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">power2</span><span class="hljs-params">(a: <span class="hljs-type">Double</span>, n: <span class="hljs-type">Double</span>)</span></span> = <span class="hljs-keyword">if</span> (a &lt; <span class="hljs-number">0</span> || n &lt; <span class="hljs-number">0</span>) {
+    println(<span class="hljs-string">&quot;inputs must be positive. return 0&quot;</span>)
+    <span class="hljs-number">0.0</span>
+} <span class="hljs-keyword">else</span> a.pow(n)
+
+<span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">main</span><span class="hljs-params">(args: <span class="hljs-type">Array</span>&lt;<span class="hljs-type">String</span>&gt;)</span></span> {
+    println(power2(<span class="hljs-number">2.0</span>, <span class="hljs-number">3.0</span>))    <span class="hljs-comment">// 8.0</span>
+    println(power2(<span class="hljs-number">4.5</span>, <span class="hljs-number">6.7</span>))    <span class="hljs-comment">// 23797</span>
+    println(power2(-<span class="hljs-number">1.0</span>, <span class="hljs-number">2.0</span>))   <span class="hljs-comment">// inputs must be positive. return 0 -&gt; 0.0</span>
+}
 </code></pre>
 
                                 
@@ -546,12 +612,12 @@ Aho Aho Aho Aho Aho Aho Aho Aho Aho 40 41 Aho Aho ...
 
             
                 
-                <a href="answer1.html" class="navigation navigation-prev " aria-label="Previous page: 解答 (1)">
+                <a href="exercise1.html" class="navigation navigation-prev " aria-label="Previous page: Exercise (1)">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="answer2.html" class="navigation navigation-next " aria-label="Next page: 解答 (2)">
+                <a href="exercise2.html" class="navigation navigation-next " aria-label="Next page: Exercise (2)">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -562,7 +628,7 @@ Aho Aho Aho Aho Aho Aho Aho Aho Aho 40 41 Aho Aho ...
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Exercise (2)","level":"1.15","depth":1,"next":{"title":"解答 (2)","level":"1.15.1","depth":2,"path":"answer2.md","ref":"./answer2.md","articles":[]},"previous":{"title":"解答 (1)","level":"1.14.1","depth":2,"path":"answer1.md","ref":"./answer1.md","articles":[]},"articles":[{"title":"解答 (2)","level":"1.15.1","depth":2,"path":"answer2.md","ref":"./answer2.md","articles":[]}],"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["uml","codeblock-filename","head-append","-lunr","-search","search-pro-kui"],"pluginsConfig":{"uml":{"format":"svg","charset":"UTF-8","nailgun":false},"head-append":{"code":["<SCRIPTTAG src=\"https://unpkg.com/kotlin-playground@1\"></SCRIPTTAG>","<SCRIPTTAG src=\"./head-append.js\"></SCRIPTTAG>"]},"codeblock-filename":{},"search-pro-kui":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"exercise2.md","mtime":"2022-03-23T06:53:16.457Z","type":"markdown"},"gitbook":{"version":"3.7.1","time":"2022-04-07T00:19:54.652Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"解答 (1)","level":"1.14.1","depth":2,"next":{"title":"Exercise (2)","level":"1.15","depth":1,"path":"exercise2.md","ref":"./exercise2.md","articles":[{"title":"解答 (2)","level":"1.15.1","depth":2,"path":"answer2.md","ref":"./answer2.md","articles":[]}]},"previous":{"title":"Exercise (1)","level":"1.14","depth":1,"path":"exercise1.md","ref":"./exercise1.md","articles":[{"title":"解答 (1)","level":"1.14.1","depth":2,"path":"answer1.md","ref":"./answer1.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["uml","codeblock-filename","head-append","-lunr","-search","search-pro-kui"],"pluginsConfig":{"uml":{"format":"svg","charset":"UTF-8","nailgun":false},"head-append":{"code":["<SCRIPTTAG src=\"https://unpkg.com/kotlin-playground@1\"></SCRIPTTAG>","<SCRIPTTAG src=\"./head-append.js\"></SCRIPTTAG>"]},"codeblock-filename":{},"search-pro-kui":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"answer1.md","mtime":"2022-04-07T00:19:24.256Z","type":"markdown"},"gitbook":{"version":"3.7.1","time":"2022-04-07T00:19:54.652Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
